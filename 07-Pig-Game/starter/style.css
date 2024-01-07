@@ -126,7 +126,6 @@ main {
 .btn::first-letter {
   font-size: 2.4rem;
   display: inline-block;
-  margin-right: 0.7rem;
 }
 
 .btn--new {
@@ -164,4 +163,49 @@ main {
 .player--winner .name {
   font-weight: 700;
   color: #c7365f;
+}
+
+.hidden {
+  display: none;
+}
+
+.show-modal {
+  top: 7rem;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 50%;
+
+  background-color: white;
+  padding: 6rem;
+  border-radius: 8px;
+  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+.close-modal {
+  position: absolute;
+  top: 20px;
+  right: 50px;
+}
+
+.rules {
+  position: absolute;
+  left: 45%;
+  top: 10%;
+}
+
+.rules-text {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  right: 5%;
+}
+
+p {
+  font-size: 1.8rem;
 }

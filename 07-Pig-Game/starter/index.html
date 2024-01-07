@@ -8,6 +8,22 @@
     <title>Pig Game</title>
   </head>
   <body>
+    <button class="btn show-modal">Rules</button>
+    <div class="modal hidden">
+      <button class="close-modal">&times;</button>
+      <h1 class="rules">Rules</h1>
+      <h1 class="rules-text">
+        In the Pig game, players take turns rolling a standard die. Each roll's
+        outcome adds to the player's turn score, but rolling a 1 ends the turn
+        and cancels the accumulated points for that turn. Players can choose to
+        hold and add their turn score to their total score, passing the turn to
+        the next player. The objective is to reach a set target score (e.g., 100
+        points) to win. Players can continue rolling, risking their current turn
+        score, to accumulate points strategically and be the first to reach the
+        target score.
+      </h1>
+    </div>
+
     <main>
       <section class="player player--0 player--active">
         <h2 class="name" id="name--0">Player 1</h2>

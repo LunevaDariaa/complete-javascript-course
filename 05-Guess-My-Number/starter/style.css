@@ -117,3 +117,11 @@ h1 {
 .label-score {
   margin-bottom: 2rem;
 }
+
+#happyImage {
+  transform: scale(5);
+}
+
+#cryImage {
+  transform: scale(1);
+}
