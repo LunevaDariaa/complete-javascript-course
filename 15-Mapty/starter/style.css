@@ -49,6 +49,17 @@ a:visited {
   flex-direction: column;
 }
 
+.sort {
+  position: fixed;
+  bottom: 15%;
+  align-self: center;
+  width: 150px;
+  border-radius: 4px;
+  height: 25px;
+  background-color: var(--color-light--2);
+  font-family: inherit;
+}
+
 .logo {
   height: 5.2rem;
   align-self: center;

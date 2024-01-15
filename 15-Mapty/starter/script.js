@@ -68,13 +68,14 @@ const inputDistance = document.querySelector('.form__input--distance');
 const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
+const sortBtn = document.querySelector('.sort');
 
 class App {
   #map;
   #mapzoomLevel = 13;
   #mapEvent;
   #workouts = [];
-
+  sort = false;
   constructor() {
     //Get user's position
     this._getPosition();
@@ -88,6 +89,10 @@ class App {
     inputType.addEventListener('change', this._toggleElevationField);
 
     containerWorkouts.addEventListener('click', this._movePopup.bind(this));
+
+    sortBtn.addEventListener('click', () => {
+      this.#workouts = this._sortWorkouts(this.#workouts);
+    });
   }
 
   _getPosition() {
@@ -146,6 +151,7 @@ class App {
     form.classList.add('hidden');
     setTimeout(() => (form.style.display = 'grid'), 1000);
   }
+
   _toggleElevationField() {
     inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
     inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
@@ -310,6 +316,22 @@ class App {
     });
   }
 
+  _sortWorkouts(workouts) {
+    this.sort = !this.sort;
+    this.#workouts = workouts.reverse();
+    console.log(this.#workouts);
+    this._deleteWorkoutList();
+    this.#workouts.forEach(work => this._renderWorkout(work));
+
+    return this.#workouts;
+  }
+
+  _deleteWorkoutList() {
+    // Remove all children with the class name 'workout'
+    const workoutsDel = containerWorkouts.querySelectorAll('.workout');
+    workoutsDel.forEach(workout => workout.remove());
+  }
+
   reset() {
     localStorage.removeItem('workouts');
     location.reload();
@@ -317,38 +339,3 @@ class App {
 }
 
 const app = new App();
-
-// if (navigator.geolocation) {
-//   navigator.geolocation.getCurrentPosition(
-//     function (position) {
-//       //   console.log(position);
-//       const { latitude } = position.coords;
-//       const { longitude } = position.coords;
-//       console.log(
-//         `https://www.google.com/maps/@${latitude},${longitude},15z?entry=ttu`
-//       );
-
-//       ///////////////////////////////////////
-//       //Displaying a Map Using Leaflet Library
-//       const coords = [latitude, longitude];
-
-//       map = L.map('map').setView(coords, 13);
-//       // console.log(map);
-//       L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-//         maxZoom: 19,
-//         attribution:
-//           '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-//       }).addTo(map);
-
-//       //Handling clicks on map
-//       map.on('click', function (mapE) {
-//         mapEvent = mapE;
-//         form.classList.remove('hidden');
-//         inputDistance.focus();
-//       });
-//     },
-//     function () {
-//       alert('Could not get your position');
-//     }
-//   );
-// }
